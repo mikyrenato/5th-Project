@@ -17,3 +17,6 @@ Jinja2
 MarkupSafe
 protobuf
 ipywidgets
+
+ydata-profiling
+pandas-profiling
