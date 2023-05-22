@@ -1,148 +1,119 @@
-![For Sale](/static/images/frsale.png "Price Predictor")
-<img align="right" width="225" height="100" src="https://learningpeople.imgix.net/https%3A%2F%2Fadmin.learningpeople.com%2Fwp-content%2Fuploads%2F2019%2F01%2Fcode-institute.png?ixlib=gatsbyFP&fit=crop&auto=compress%2Cformat&w=320&h=141&s=3becdd2d48871285d91458e006867cb4" alt="code institute logo">
-
----
-
 # House Pricing (PP5)
 
-This project has been made as part of the 5 milestone projects within the Full Stack Developer course provided by Code Institute. 
-This project will be the last one within this course, and represents the Predictive Analytics path that i have chosen. Therefore, the initial idea for this project was 'working with data'.
+This project is part of the Full Stack Developer course provided by Code Institute, specifically the Predictive Analytics path. It is the final milestone project of the course, focusing on working with data.
 
-In this project you will be taken step by step withing everything that is happening from data cleaning to feature engineering, as the content has been personalised in a specific way, making you feeling welcomed, and helping by offering a great understanding of each individual step and what I did and how I did. 
+The project aims to provide a step-by-step walkthrough of the entire process, from data cleaning to feature engineering. The content has been personalized to offer a welcoming experience and a comprehensive understanding of each step and its implementation.
 
-At any point, if you get confused, please refer back to the readme file as you will find a lot of important information that has been used within the project.
+If you need assistance or get confused at any point, refer back to this README file for important information.
 
 ![Mockup](/static/images/mockupp.png)
 
+**Live Application:** [House Price Predictor](https://house-price-predictor-pp5.herokuapp.com/)
 
-**The live application can be found [here.](https://house-price-predictor-pp5.herokuapp.com/)**
+## Dataset
 
-## Dataset Content
+The dataset used in this project is sourced from [Kaggle](https://www.kaggle.com/). Kaggle is an online community platform for data scientists and machine learning enthusiasts that offers collaboration, dataset publishing, GPU integrated notebooks, and data science challenges.
 
-- The dataset is sourced from [Kaggle.](https://www.kaggle.com/)
+For this project, a fictional user story has been created. However, the predictive analytics techniques applied can be utilized in real-world projects, such as those related to the housing market in Ames.
 
-***What is Kaggle?***
+The dataset, found on Kaggle under the Code Institute account, consists of 1,460 rows (including variable names) representing housing records from Ames, Iowa, USA. It includes various house profiles, such as floor areas, basements, garages, kitchens, lots, porches, wood decks, and the year built, among others. The dataset covers houses built between 1872 and 2010, along with their respective sale prices.
 
-- *Kaggle is an online community platform for data scientists and machine learning enthusiasts.* 
-- *Kaggle allows users to collaborate with other users, find and publish datasets, use GPU integrated notebooks, and compete with other data scientists to solve data science challenges.*
-
-Within this project, I have created a fictional user story. 
-However, the predictive analytics done, could be applied in a real project within the workplace or if you live in Ames.
-
-- As mentioned above, the dataset I found on Kaggle, is under the Code institute account. 
-Therefore, I have decided to trust this dataset and use it within my project. 
-
-This document contains 1.460 *(1.461 including the name of each variable)* rows and represents housing records from a city called Ames located within the region of Iowa, US.
-
-- This dataset contains house profiles, such as: 
-	- floor areas; 
-	- basement;
-	- garage;
-	- kitchen;
-	- lot;
-	- porch;
-	- wood deck;
-	- year built, etc.
-	
-	For houses built between 1872 and 2010, and their respectively sale price.  
-
-For the house profile provided in this dataset, I have created the table located below which has been built up with the variables provided by the dataset, and each individual meaning and units use to measure these variables.
-
-In any part of the project that you are on, and you don’t understand one of the categories that the analysis has been done, please refer to the below table. 
+To help you understand the analysis performed in the project, refer to the table below, which provides explanations and units for each variable used:
 
 ---
 
-|Variable|Meaning|Units|
-|:----|:----|:----|
-|1stFlrSF|First Floor square feet|334 - 4692 - (Min - Max > Sq. ft.)|
-|2ndFlrSF|Second floor square feet|0 - 2065 - (Min - Max > Sq. ft.)|
-|BedroomAbvGr|Bedrooms above grade (does NOT include basement bedrooms)|0 - 8 - (Min - Max > Bedrooms)|
-|BsmtExposure|Refers to walkout or garden level walls|Gd: Good Exposure; Av: Average Exposure; Mn: Minimum Exposure; No: No Exposure; None: No Basement|
-|BsmtFinType1|Rating of basement finished area|GLQ: Good Living Quarters; ALQ: Average Living Quarters; BLQ: Below Average Living Quarters; Rec: Average Rec Room; LwQ: Low Quality; Unf: Unfinished; None: No Basement|
-|BsmtFinSF1|Type 1 finished square feet|0 - 5644 - (Min - Max > Sq. ft.)|
-|BsmtUnfSF|Unfinished square feet of basement area|0 - 2336 - (Min - Max > Sq. ft.)|
-|TotalBsmtSF|Total square feet of basement area|0 - 6110 - (Min - Max > Sq. ft.)|
-|GarageArea|Size of garage in square feet|0 - 1418 - (Min - Max > Sq. ft.)|
-|GarageFinish|Interior finish of the garage|Fin: Finished; RFn: Rough Finished; Unf: Unfinished; None: No Garage|
-|GarageYrBlt|Year garage was built|1900 - 2010 - (Min - Max > Year Built)|
-|GrLivArea|Above grade (ground) living area square feet|334 - 5642 - (Min - Max > Sq. ft.)|
-|KitchenQual|Kitchen quality|Ex: Excellent; Gd: Good; TA: Typical/Average; Fa: Fair; Po: Poor|
-|LotArea| Lot size in square feet|1300 - 215245 - (Min - Max > Sq. ft.)|
-|LotFrontage| Linear feet of street connected to property|21 - 313 - (Min - Max > Lin. ft.)|
-|MasVnrArea|Masonry veneer area in square feet|0 - 1600 - (Min - Max > Sq. ft.)|
-|EnclosedPorch|Enclosed porch area in square feet|0 - 286 - (Min - Max > Sq. ft.)|
-|OpenPorchSF|Open porch area in square feet|0 - 547 - (Min - Max > Sq. ft.)|
-|OverallCond|Rates the overall condition of the house|10: Very Excellent; 9: Excellent; 8: Very Good; 7: Good; 6: Above Average; 5: Average; 4: Below Average; 3: Fair; 2: Poor; 1: Very Poor|
-|OverallQual|Rates the overall material and finish of the house|10: Very Excellent; 9: Excellent; 8: Very Good; 7: Good; 6: Above Average; 5: Average; 4: Below Average; 3: Fair; 2: Poor; 1: Very Poor|
-|WoodDeckSF|Wood deck area in square feet|0 - 736 - (Min - Max > Sq. ft.)|
-|YearBuilt|Original construction date|1872 - 2010 - (Min - Max > Year Built)|
-|YearRemodAdd|Remodel date (same as construction date if no remodeling or additions)|1950 - 2010 - (Min - Max > Remodel Year)|
-|SalePrice|Sale Price|34.900 - 755.000 - (Min - Max > Sale price in $)|
+| Variable      | Meaning                                     | Units                           |
+|:--------------|:--------------------------------------------|:--------------------------------|
+| 1stFlrSF      | First Floor square feet                      | 334 - 4,692 sq. ft.             |
+| 2ndFlrSF      | Second floor square feet                     | 0 - 2,065 sq. ft.               |
+| BedroomAbvGr  | Bedrooms above grade (excludes basement)     | 0 - 8 bedrooms                  |
+| BsmtExposure  | Refers to walkout or garden level walls       | Gd: Good, Av: Average, Mn: Minimum, No: No Exposure, None: No Basement |
+| BsmtFinType1  | Rating of basement finished area             | GLQ: Good Living Quarters, ALQ: Average Living Quarters, BLQ: Below Average Living Quarters, Rec: Average Rec Room, LwQ: Low Quality, Unf: Unfinished, None: No Basement |
+| BsmtFinSF1    | Type 1 finished square feet                  | 0 - 5,644 sq. ft.               |
+| BsmtUnfSF     | Unfinished square feet of basement area       | 0 - 2,336 sq. ft.               |
+| TotalBsmtSF   | Total square feet of basement area            | 0 - 6,110 sq. ft.               |
+| GarageArea    | Size of garage in square feet                 | 0 - 1,418 sq. ft.               |
+| GarageFinish  | Interior finish of the garage                 | Fin: Finished, RFn: Rough Finished, Unf: Unfinished, None: No Garage |
+| GarageYrBlt   | Year garage was built                         | 1900 - 2010                     |
+| GrLivArea     | Above grade (ground) living area square feet  | 334 - 5,642 sq. ft.             |
+| KitchenQual   | Kitchen quality                              | Ex: Excellent, Gd: Good, TA: Typical/Average, Fa: Fair, Po: Poor |
+| LotArea       | Lot size in square feet                       | 1,300 - 215,245 sq. ft.         |
+| LotFrontage   | Linear feet of street connected to property   | 21 - 313 linear ft.             |
+| MasVnrArea    | Masonry veneer area in square feet            | 0 - 1,600 sq. ft.               |
+| EnclosedPorch | Enclosed porch area in square feet            | 0 - 286 sq. ft.                 |
+| OpenPorchSF   | Open porch area in square feet                | 0 - 547 sq. ft.                 |
+| OverallCond   | Rates the overall condition of the house      | 10: Very Excellent, 1: Very Poor |
+| OverallQual   | Rates the overall material and finish of the house | 10: Very Excellent, 1: Very Poor |
+| WoodDeckSF    | Wood deck area in square feet                 | 0 - 736 sq. ft.                 |
+| YearBuilt     | Original construction date                    | 1872 - 2010                     |
+| YearRemodAdd  | Remodel date (same as construction date if no remodeling or additions) | 1950 - 2010 |
+| SalePrice     | Sale Price                                   | $34,900 - $755,000              |
+
 
 
 --- 
-## Agile methodology - Development
+## Agile Methodology - Development
 
-- In the beginning of the project I decided to create a Kanban project, where to input 'issues', the idea was to help me in following a direction while building this project. 
-- The Kanban Table Project can be found [here.](https://github.com/users/Vasi012/projects/4)
+To facilitate the development process, I chose to implement the Kanban methodology. By utilizing a Kanban project board, I was able to manage and track the progress of different tasks and issues throughout the project. This approach helped me maintain focus and direction during the development phase.
 
+You can access the Kanban project board for this project [here](https://github.com/users/Vasi012/projects/4).
 
-![table](/static/images/pp5.png)
+![Kanban Table](/static/images/pp5.png)
 
 ---
-## Crisp-DM, what it is? how it's used?
 
-![Crisp-dm](/static/images/CRISP-DM.png)
+## CRISP-DM: A Comprehensive Data Science Process
 
-- Crisp-DM or CRoss Industry Standard Process for Data mining is a process model that serves as the base for a data science process.
+![CRISP-DM](/static/images/CRISP-DM.png)
 
-- Crisp-DM has six sequential phases:
+CRISP-DM, which stands for Cross Industry Standard Process for Data Mining, is a well-known process model that serves as the foundation for data science projects.
 
-1. Business Understanding - What does the business need?
-2. Data Understanding - What data do we have / need? Is it clean?
-	- Don't forget, garbage in, garbage out, so make sure your data is cleaned.
-3. Data Preparation - How do we organize the data for modeling?
-4. Modeling - What modeling techniques should we apply?
-5. Evaluation - Which model best meets the business's objectives?
-6. Deployment - How do stakeholders access the results?
+The CRISP-DM model consists of six sequential phases:
 
-If you will like to reserch more indept what each of the above sequential phases mean and how to use them, please refer to [CRISP-DM](https://www.datascience-pm.com/crisp-dm-2/). 
+1. Business Understanding: Understand the objectives and requirements of the business.
+2. Data Understanding: Gain insights into the available data and assess its quality and relevance.
+   - Remember, "garbage in, garbage out" - it's crucial to ensure data cleanliness.
+3. Data Preparation: Organize and preprocess the data to make it suitable for modeling.
+4. Modeling: Apply appropriate modeling techniques to extract insights and patterns from the data.
+5. Evaluation: Evaluate the performance of different models and select the one that best meets the business's objectives.
+6. Deployment: Deploy the chosen model and make it accessible to relevant stakeholders.
+
+If you would like to explore each of the above phases in more detail and learn how to effectively utilize them, please refer to the [CRISP-DM](https://www.datascience-pm.com/crisp-dm-2/) resource.
 
 ---
 
 ## Business Requirements.
 
-I am studying a Full Stack Developer course with Code Institute. I just learnt how to use Machine Learning as part of my last project and how to predict future trends which I will be using in my career as a Data Scientist. 
 
-My niece who lives in America started a small real estate business, and part of her vision was to buy 6 houses in a small town from Iowa, called Ames. As Ames is known for its robust, stable economy and flourishing cultural environment with a population over 89,540 people, my niece believes that this will be a very good investment. Buying some old houses, refurbish them and after that selling them at a higher price. 
+I am currently enrolled in the Full Stack Developer course offered by Code Institute. Throughout the course, I have gained knowledge and practical experience in various areas, including Machine Learning. This valuable skillset will greatly benefit me in my future career as a Data Scientist.
 
-Overall, my niece has a good understanding of the average prices for the houses in this region. However, because this investment will be very important for her business, she reached out to her uncle who will be able to use the power of machine learning to predict the prices for these homes, without risking an inaccurate appraisal. 
+Recently, a customer of mine, who resides in the United States, embarked on a venture in the real estate industry. Her vision entails purchasing six houses located in Ames, a small town in Iowa. With its strong and stable economy, coupled with a vibrant cultural environment and a population of over 89,540 residents, my customer firmly believes that investing in this area will yield significant returns. Her plan involves acquiring older properties, renovating them, and subsequently selling them at higher prices.
 
-My niece has conducted research, and she found a public dataset for the houses that have been sold over the years. She will be able to share this data with me in order to create an accurate prediction for each of the houses that she plans to sell after refurbishment. 
+Although my customer possesses a solid understanding of the average house prices in this region, she recognizes the importance of accurate predictions to ensure the success of her investment. Consequently, she approached me, her uncle, knowing that I possess expertise in machine learning. By leveraging the power of this technology, I can provide her with precise price predictions for each of the refurbished houses, eliminating the risk of unreliable appraisals.
+
+To facilitate this task, my customer has conducted extensive research and identified a publicly available dataset containing historical records of sold houses. She will share this dataset with me, enabling me to create a robust prediction model that aligns with her business goals.
 
 ---
 
-## Hypothesis and how to validate?
+## Hypothesis and Validation
 
-1. Hypothesis one.
 
-- We consider the price of the houses to be higher if the house has had a larger surface measured in sq. ft.
-	- A correlation study can help in investigating if this is true.
+1. Hypothesis One:
+   - Assumption: The price of houses is positively correlated with their surface area measured in square feet.
+   - Validation Approach: Perform a correlation study to examine the relationship between house prices and surface area.
 
-2. Hypothesis Two.
+2. Hypothesis Two:
+   - Assumption: Houses with the same usable surface area but built more recently have a higher price than older-built homes.
+   - Validation Approach: Conduct a correlation study to investigate the relationship between house prices and the year they were built.
 
-- We consider that the houses with the same util surface measured in sq. ft. but built more recently has had a higher price then a older built home.
-	- A correlation study can help in investigating if this is true.
+3. Hypothesis Three:
+   - Assumption: Houses with the same usable surface area, built in a recent year, but remodeled recently, have a higher price compared to houses built in the same year but not remodeled.
+   - Validation Approach: Perform a correlation study to analyze the relationship between house prices and remodeling status.
 
-3. Hypothesis Three.
+4. Hypothesis Four:
+   - Assumption: Houses with similar surface area but higher quality materials and condition scores tend to have a higher sales price.
+   - Validation Approach: Conduct a correlation study to assess the relationship between house prices and material/condition scores.
 
-- We consider that the houses with the same util surface measured in sq. ft. built in a recent year but remodeled recently has had a higher price then a house built in the same year but not remodeled. 
-	- A correlation study can help in investigating if this is true.
-
-4. Hypothesis Four.
-
-- We consider that a house with similar sq. ft., but with a higher quality of materials and condition scores might have had a higher sales price.
-	- A correlation study can help in investigating if this is true.
 
 ---
 
@@ -152,75 +123,56 @@ List the business requirements and rationale to map them to the data visualizati
 
 ---
 
-### Business requirement 1 – Data Visualization and Correlation study.
+### Business Requirement 1 – Data Visualization and Correlation Study
 
--	As a data analyst I will need to visualize the data related to the house records, so that I can discover how the price will be influenced by each attribute of each house presented in the dataset.
+- As a data analyst, I need to visualize the data related to the house records to understand how each attribute influences the sale price.
+- Conduct a correlation study (Pearson and Spearman) to determine the correlation between variables and the sale price.
+	- Perform correlation and/or PPS studies to investigate the most relevant variables correlated to the sale price.
+- Plot the main variables against the sale price to visualize insights on how the house attributes correlate with the sale price.
+- Summarize the insights obtained from visualizing these variables against the sale price.
 
--	As a data analyst I will need to conduct a correlation study (Pearson and Spearman) so I can better understand how the variables are correlated to sale price. So that I can discover how the house attributes correlate with the sale price of the houses.
-	- Correlation and/or PPS studies may be performed to investigate the most relevant variables correlated to the sale price.
+## Outcome after predicting pricing
 
--	As a data analyst I would like to plot the main variables against the sale price so that I can visualize insights that can discover how the house attributes correlate with the sale price.
+After conducting our study, we realized that the features that impact the price are:
 
-- Visualize these variables against the sale price and summaries the insights.
+![Features Impacting Price](/static/images/importancefeat.png)
 
+We can take a closer look at each:
 
-## Outcome after predicting pricing.
-
-- After conducting our study, we realised that the features that impact the price are:
-
-![FeaturesImactingPrice](/static/images/importancefeat.png)
-
-- We can take a closer look at each:
 - GrLivArea (Above grade (ground) living area square feet)
-
-![GrLivArea](/static/images/GrLivArea.png)
+  ![GrLivArea](/static/images/GrLivArea.png)
 
 - GarageArea (Size of garage in square feet)
-
-![GarageArea](/static/images/garageArea.png)
+  ![GarageArea](/static/images/garageArea.png)
 
 - YearBuilt (Original construction date)
-
-![YearBuilt](/static/images/YearBuilt.png)
+  ![YearBuilt](/static/images/YearBuilt.png)
 
 - 1stFlrSF (First Floor square feet)
-
-![1stFlrSF](/static/images/train.png)
+  ![1stFlrSF](/static/images/train.png)
 
 - OverallQual (Rates the overall material and finish of the house)
-
-![OverallQual](/static/images/OverallQual.png)
+  ![OverallQual](/static/images/OverallQual.png)
 
 - TotalBsmtSF (Total square feet of basement area)
+  ![TotalBsmtSF](/static/images/TotalBsmtSF.png)
 
-![TotalBsmtSF](/static/images/TotalBsmtSF.png)
+For more details, please refer to the live app linked at the top of the readme/deployment.
 
-- More details could be found in the live app, the link has been posted in the top of the read me / deployment. 
+### Business Requirement 2
 
----
+- As a data analyst, I need to predict the sale price of the houses.
+- Build an ML model to predict the house prices for the 6 newly refurbished houses my niece plans to sell.
+- Ensure that the ML system can reliably predict the summed sale price of the 6 houses.
+- Use either conventional ML or Neural Networks to establish the relationships between the features and the target variable.
+- Consider changing the ML task from regression to classification if a valid rationale exists.
+- If using conventional ML with libraries like scikit-learn, perform extensive hyperparameter optimization for the chosen algorithm.
 
-### Business requirement 2 
-
--	As a data analyst I would need to be able to predict the sale price of these houses.
-
--	Build an ML Model, so that I can predict the house prices, when my niece decides to sell the 6 houses, that she will be refurbishing. At the same time, as the dataset its accurate to this area, she could come back to this project and use it again for future houses that she might want to sell or buy.
-
--	Deliver an ML system that is capable of reliably predicting the summed sale price of the 6 newly refurbished houses. 
-
--	Use either conventional ML or Neural Networks to map the relationships between the features and the target. 
-
--	Consider changing the ML Task from regression and classification if you find a valid rationale for that.
-
--	If conventional ML is used for modelling, with packages like scikit-learn for example, conduct and extensive hyperparameter optimization for a given algorithm. 
-
-*Refer to the Scikit-learn lesson, Unit notebook 6: Cross-Validation Search Part 2.*
-
-*At the end of the notebook, is a list of hyperparameter options and values to start with for the family of algorithms covered in the course.*
 
 
 ## Outcome after price prediction.
 
-- My niece wanted to find out what are the prices for the 6 houses. 
+- My client wanted to find out what are the prices for the houses. 
 
 ![6predictions](/static/images/nieceprediction.png)
 
@@ -235,66 +187,66 @@ List the business requirements and rationale to map them to the data visualizati
 
 ### Business Case Assessment
 
-1.	What are the business requirements?
+1. **What are the business requirements?**
 
-### Business requirement 1:
+### Business Requirement 1:
 
-- My niece would like to discover how the house attributes correlate with the sale price.
-- Therefore, she would expect to be able to visualize the correlation variables against the sale price. (This will be discussed in the business requirement 2).
-- My niece would be interested in predicting the price of the newly refurbished houses, and any other new houses that she would buy in the future.
+- The primary objective is to analyze the correlation between house attributes and sale prices.
+- It is important to visualize the correlation variables in relation to the sale price. (This will be further discussed in business requirement 2).
+- The ability to predict the prices of newly refurbished houses and potential future house purchases is also desired.
 
-2.	Can the above business requirements be answered with conventional data analysis?
+2. **Can the above business requirements be addressed with conventional data analysis?**
 
-- Technically yes, we can use the conventional data analysis to investigate how the house attributes are correlated with the sale prices. 
+- Yes, conventional data analysis techniques can be used to investigate the correlation between house attributes and sale prices.
 
-3.	Does my niece require a dashboard or an API endpoint?
+3. **Does the project require a dashboard or an API endpoint?**
 
-- As I would like to offer my best help to my niece by building this project, I would like her to be able to come back to this in case she would like to use it again in the future.
+- To provide the best assistance to my niece, I want to develop a project that can be revisited and reused in the future.
 
-4.	What would make my niece consider this project a successful outcome?
+4. **What would define a successful outcome for the project?**
 
-- For my niece to consider this a successful outcome, she would need to see a study showing the most relevant variables correlated to the sale price.
-- Also, if she would like to predict other house prices from this region and of course the price of the 6 houses that she newly refurbished. 
+- A successful outcome would include a comprehensive study highlighting the most relevant variables correlated to the sale price.
+- The ability to predict the prices of other houses in the region, including the 6 newly refurbished houses, is also important.
 
-5.	As a data analyst I would like to be able to break down the project into epics and user stories. 
+5. **As a data analyst, I would like to break down the project into epics and user stories.**
 
-- Information gathered from a public point and data collection in: (DataCollection.ipynb).
-- Data visualization, cleaning, and preparation in: (SalePriceStudy.ipynb).
-- Model training, optimization, and validation in: (FeatureEngineering.ipynb).
-- Dashboard planning, designing and development.
-- Dashboard deployment and release. 
+- Data gathering from a public source and initial data collection: [DataCollection.ipynb]
+- Data visualization, cleaning, and preparation: [SalePriceStudy.ipynb]
+- Model training, optimization, and validation: [FeatureEngineering.ipynb]
+- Dashboard planning, design, and development
+- Dashboard deployment and release
 
-6.	Ethical or Privacy concerns?
+6. **Are there any ethical or privacy concerns?**
 
-- As this dataset has been found from a public source, my niece doesn’t need to concern of any. 
+- Since the dataset is obtained from a public source, there are no ethical or privacy concerns for my niece.
 
-7.	Does the data suggest a particular model?
+7. **Does the data suggest a particular model?**
 
-- The data suggests a regressor model where the target is the sale price.
+- The data suggests the use of a regression model, where the target variable is the sale price.
 
-8.	What are the model inputs and intended outputs? 
+8. **What are the model inputs and intended outputs?**
 
-- The sale price can be influenced by the house attribute information provided above, and the outputs is the predicted sale price.
+- The sale price is influenced by the house attribute information provided above, and the intended output is the predicted sale price.
 
-9.	What is the criteria for the performance goal of the predictions?
+9. **What are the criteria for the performance goal of the predictions?**
 
-- I have agreed with my niece that an R2 score of at least 0.75 on the train set as well as on the test set would be perfect.
+- My niece and I have agreed that achieving an R2 score of at least 0.75 on both the training and test sets would be considered ideal.
 
-10.	How would my niece benefit from this?
+10. **How would my niece benefit from this project?**
 
-- My niece would be able to maximize the sale price for the newly refurbished houses. Furthermore, she will be able to benefit from this in the future for selling the houses which her small real estate agency might occur. 
+- My client will be able to maximize the sale prices of the newly refurbished houses.
+- Additionally, he can leverage the project in the future to sell other houses through his small real estate agency.
 
 
 ### Outcome after price prediction:
 
-- After the finalisation of this project, we could see that the R2 that i agreed with my niece has been met. She initially requested an R2 score above 0.75. 
+- After the completion of this project, we were able to achieve the agreed-upon R2 score with my niece, which was initially set to be above 0.75.
 
-![r2score](/static/images/scoretrainandtest.png)
+![R2 score](/static/images/scoretrainandtest.png)
 
-- And we can see how the train sets and test sets have been conducted so they can be almost similar.
+- The training and test sets were conducted in a way that they closely match each other.
 
-![testandtrain](/static/images/graftraintest.png)
-
+![Train and test sets](/static/images/graftraintest.png)
 
 ---
 
@@ -302,128 +254,94 @@ List the business requirements and rationale to map them to the data visualizati
 
 ### Dashboard Expectations
 
-The dashboard should contain:
+The dashboard should include:
 
-- A project summary page, showing the project dataset summary and my niece’s requirements for this project.
-- A page listing the findings related to which features have the strongest correlation to the house sale price.
-- A page displaying the 6 houses attributes and their respective predicted sale price.
-- It should display a message informing the summed predicted price for all of the 6 houses newly refurbished.
-- Add interactive input and widgets which allows a user to provide real-time house data to predict the sale price.
-- A page indicating my project hypothesis(es) and how I would validate it across the project. 
-- A technical page displaying my model performance, and if I would deploy a ML pipeline to have displayed my pipeline steps. 
+Page 1: Quick project summary
 
-### Page 1: Quick project summary
+- A summary of the project dataset
+- Business requirements and my niece's project requirements
+- Dataset content guidelines
 
-Quick project summary: 
+Page 2: House Sale Price Study
 
-- Describe project dataset.
-- State business requirements.
-- Dataset Content Guidelines.
+- Addressing business requirement 1
+- Data inspection of the housing sale dataset
+- Displaying the number of rows and columns in the data
+- Showing the first ten rows of the data
+- Displaying variables with the strongest correlation to the sale price and drawing conclusions
+- Individual plots showing the correlation between the sale price and each variable
 
-### Page 2: House Sale Price Study
+Page 3: Price Predictor
 
-- In the inception point of the project, I wanted this page to answer business requirement 1, but I couldn’t know in advance which plots would need to be displayed. 
-- After we analysed the data, I aggreged with my niece that the page will:
-- State business requirement 1.
-- Checkbox: data inspection on housing sale dataset.
-- Display the number of rows and columns in the data and display the first ten rows of the data.
-- Display the variables that bear the strongest correlation to sale price and the conclusions.
-- Checkbox: Individual plots showing how the sale price correlates to each variable. 
+- Addressing business requirement 2
+- Listing the details of my niece's houses and their predicted sale prices
+- Displaying the total sum of the predicted house sale prices
+- Providing interactive input and widgets for real-time house data to predict the sale price
+- A "Run predictive analysis" button to generate predictions based on the provided house data
 
-### Page 3: Price Predictor
+Page 4: Project Hypothesis and Validation
 
-- State business requirement 2
-- List the details of my niece's houses and their respective price predictions.
-- Display the total sum of all the predicted house sales price.
-- A set of widgets inputs, which relate to house sales dataset.
-- The best features, discovered during feature engineering notebook are available to my niece in order to capture the attribute of each house that she asked for a price prediction.
-- “Run predictive analysis”, this button serves to house data, provided by my niece, to the ML pipelines, and predicts the sale price for the house and displays the result to her (Therefore, she would be able to calculate the price as well for these 6 houses, and in future for the other houses that she might buy or sell). 
+- Describing each project hypothesis, its conclusion, and the validation method
 
-### Page 4: Project Hypothesis and Validation
+Page 5: ML: House Sale Price Prediction
 
-- Before the analysis, I knew that this page would describe each project hypothesis, the conclusion, and how I will validate each one of them. 
-
-- After the data analysis, we can report that:
-
-1. An evaluation of sales price of other houses from this area are based on similar attributes with the 6 houses that my niece would like to sell. Therefore, this project should provide an accurate prediction of sales price for each house. 
-
-2. The correlation analysis shows that the sizes of the ground floor living area, the first floor, the basement, and the garage, play a key role in determining the house price. In addition, the year of the house when was built and the last refurbishment, the quality of the used materials also plays a significant role in determining a house price. 
-
-### Page 5: ML: House Sale Price Prediction
-
-- Considerations and conclusions after the pipeline will be trained.
-- Present the ML Pipeline steps.
-- Feature importance: List the features and plot the best features.
-- Pipeline performance evaluation: Show model evaluation and plots.
+- Considerations and conclusions after training the ML pipeline
+- Displaying the ML pipeline steps
+- Listing the feature importance and plotting the best features
+- Evaluating the pipeline's performance and displaying relevant plots
 
 ---
 
 ## Unfixed Bugs
 
-- After conducting a set of tests, I haven't found any bugs.
-- However, there are some warning as the panda packages are updating, and some variables might not work accordingly. I would like to point out at this stage that the template provided by the Code Institute didn't have an updated version for the panda packages. Having this said, I was unsure if I needed to update them or not. The project has been checked before submission on the 2nd of February, and everything works as expected. Once the submission of the project was successful, I will make sure update these packages in order for the project to be able to work at its fully potential.   
+- After conducting several tests, no bugs were found in the project.
+- However, there are some warnings related to updates in the pandas package, which may cause certain variables to not work as expected. These warnings arose because the template provided by Code Institute did not include an updated version of the pandas package. Although the project was checked before submission on February 2nd and works as expected, I will make sure to update these packages to fully optimize the project's performance.
 
-## Test conducted on the Python Code:
+## Python Code Testing
 
-- As this project has been built using mainly back-end programing with Python, I have tested the python code using "python3 -m flake8 app_pages".
-
-- I have used the flake8 inside the terminal, as the pep8 page has been deactivated resulting in making impossible to check the code via this website. However, flake8 seems to be quite accurate. 
-
-**How to use flake8?**
-
-- Firstly, we have to open GitPod, open our project, and in the terminal we install flake8.
-	- pip install flake8, once flake8 has been installed we need to run another command in the terminal.
-	- python3 -m flake8 < app name >, (here we have to insert the folder name where we can find the python code.)
-
-- After conducting this test, we have noticed that we have an warning "f-string is missing placeholders"
-
-![test](/static/images/test.png)
-
-- Because just pointing out that there are no placeholders is not enough to determine which variables to include.
-- However, the code seems to work as expected, therefore I have decided to ignore these warnings. 
-
-
-- Furthermore, as the front-end of the website has been built using Streamlit, there is not any reason to check the front-end using Wave or Lighthouse, as the website has not been built by me. However, everything works as expected, all the pictures and text are loading fast and as expected.
----
+- The python code was tested using "python3 -m flake8 app_pages" in the GitPod terminal.
+- The flake8 tool was used, as the pep8 page was deactivated. The code passed the flake8 test, except for the "f-string is missing placeholders" warning.
+- Since the code works as expected, I chose to ignore these warnings.
 
 ## Deployment
 
-The master branch of this repository has been used for the deployed version of this application.
+The master branch of this repository was used for the deployed version of the application.
 
-## Using Github & Gitpod
+### Using GitHub & Gitpod
 
-To deploy my Data application, I had to use the [Code Institute Full Template](https://github.com/Code-Institute-Solutions/milestone-project-heritage-housing-issues).
+To deploy the Data application, I followed these steps:
 
-- Click the Use This Template button.
-- Add a repository name and brief description.
-- Click the Create Repository from Template to create your repository.
-- To create a Gitpod workspace you then need to click Gitpod, this can take a few minutes.
-- When you want to work on the project it is best to open the workspace from Gitpod (rather than Github) as this will open your previous workspace rather than creating a new one. You should pin the workspace so that it isn't deleted.
-- Committing your work should be done often and should have clear/explanatory messages, use the following commands to make your commits:
-	- git add .: adds all modified files to a staging area
-	- git commit -m "A message explaining your commit": commits all changes to a local repository.
-	- git push: pushes all your committed changes to your Github repository.
+- I used the Code Institute Full Template by clicking the "Use This Template" button.
+- I added a repository name and description.
+- I created the repository from the template, which created a Gitpod workspace.
+- I committed my work often with clear messages using the commands:
+  - `git add .` to add all modified files to the staging area
+  - `git commit -m "A message explaining the commit"` to commit the changes to the local repository
+  - `git push` to push the committed changes to the GitHub repository
 
-## Forking the GitHub Repository
+### Forking the GitHub Repository
 
-By forking the GitHub Repository you will be able to make a copy of the original repository on your own GitHub account allowing you to view and/or make changes without affecting the original repository by using the following steps:
+To fork the GitHub repository, follow these steps:
 
-1. Log in to GitHub and locate the [GitHub Repository](link)
-2. At the top of the Repository (not top of page) just above the "Settings" button on the menu, locate the "Fork" button.
-3. You should now have a copy of the original repository in your GitHub account.
+1. Log in to GitHub and locate the GitHub repository.
+2. Click the "Fork" button at the top of the repository page.
+3. You will now have a copy of the original repository in your GitHub account.
 
-## Making a Local Clone
+### Making a Local Clone
 
-1. Log in to GitHub and locate the GitHub Repository
-2. Under the repository name, click "Clone or download".
-3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
-4. Open command line interface on your computer
-5. Change the current working directory to the location where you want the cloned directory to be made.
-6. Type git clone, and then paste the URL you copied in Step 3.
+To make a local clone of the GitHub repository, follow these steps:
 
-$ git clone [ADD Project link](https://house-price-predictor-pp5.herokuapp.com/)
+1. Log in to GitHub and locate the GitHub repository.
+2. Click the "Clone or download" button.
+3. Copy the repository's URL under "Clone with HTTPS".
+4. Open the command line interface on your computer.
+5. Change the current working directory to the location where you want to clone the repository.
+6. Use the command `git clone` followed by the URL you copied in step 3.
 
-7. Press Enter. Your local clone will be created.
+
+$ git clone [repository URL]
+
+
 
 ## Deployment To Heroku
 
@@ -434,38 +352,33 @@ $ git clone [ADD Project link](https://house-price-predictor-pp5.herokuapp.com/)
 3. Select your repository name and click Search. Once it is found, click Connect.
 4. Select the branch you want to deploy, then click Deploy Branch.
 5. The deployment process should happen smoothly in case all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
+7. Press Enter to create your local clone.
 
 ---
 ## Conclusion
 
-- The project requires a dataset. This dataset was found on Kaggle, used and cleaned in order to be able to use it withing my project.
-- Each variable has been added into a table (can be found in the readme file), with the meaning and the units measured to measure each variable.
-- The Agile methodology has been used to allow me to clearly see the steps required for this project, helping me to manage, and ensure that I don't omit any required part off this project. Each 'issue' posted in the Kanban table represents a part of the project, if you click on each of them, an explanation will be displayed.
-- The business requirements have been created using the CRISP-DM model. The project has been built to help my niece's business in order to be able to predict housing prices. 
-- A dashboard has been created using streamlit, where all the details can be exposed to the stakeholders, in this case just my niece. The dashboard has been created so that a person who doesn't understand ML will find easy to understand what is all about.
-- The project has been deployed on heroku, please refer to the above steps.
+- Dataset Acquisition: The project required a dataset, which was obtained from Kaggle. The dataset was carefully selected, used, and cleaned to ensure its suitability for the project.
+- Variable Table: Each variable has been organized into a comprehensive table, detailing their meanings and the units of measurement associated with each variable. The table can be found in the readme file.
+- Agile Methodology: The Agile methodology was adopted to facilitate clear project planning and management. By utilizing the Kanban board, all necessary project steps were identified, ensuring no crucial elements were overlooked. Each "issue" in the Kanban table represents a specific part of the project, and clicking on each issue provides a detailed explanation.
+- Business Requirements: The project's business requirements were developed using the CRISP-DM model. The primary objective was to assist my niece's business in accurately predicting housing prices.
+- Streamlit Dashboard: A user-friendly dashboard was created using Streamlit, allowing all relevant project details to be presented to stakeholders, particularly my niece. The dashboard was designed to be easily understandable even for individuals without a deep understanding of machine learning.
+- Deployment on Heroku: The project has been successfully deployed on Heroku. Please refer to the above steps for instructions on deployment.
 
-Overall, the project is a success as all the requirements have been met and my niece is happy with the predicted price. However, due to the inflation, after a little bit of checking we realized that we have to add 10.5% to the house prices, but this might vary depending on how the inflation will grow or decrease. 
-
+Overall, the project can be deemed a success as all the requirements have been fulfilled, and my niece is satisfied with the predicted prices. However, considering the impact of inflation, it was determined that a 10.5% increase should be added to the house prices. It's important to note that this percentage may vary depending on future changes in inflation rates.
 
 ---
 
-## Credits & Content used.
+## Credits & Content Used
 
-- The content of this project, represent the understanding provided by walk-through projects provided by Code Institute.
-	- There might be some similarities as some contents have been copied and modified directly from the walk-through project 2 'Churnometer'. 
-- Some bugs and issues appeared withing the project which have been fixed using [Stack Overflow](https://stackoverflow.com/).
-- I have explored in more details different terms used within deep machine learning from [YouTube.](https://www.youtube.com/)
-- Some issues that I encountered during this project have been resolved within the Slack Community, many thanks to Niel_ci. 
-- The readme file was built using the Code Institute template.
-- Some elements presented in the readme file have been inspired from [Van-essa.](https://github.com/van-essa/heritage-housing-issues#readme) 
-- My mentor Marcel who guided me through the project making sure the best practices were used.
-
+- Project Content: The project's content draws from the knowledge gained through walk-through projects provided by Code Institute. While there may be similarities to the content of the "Churnometer" walk-through project, it has been adapted and modified accordingly.
+- Bug Fixing & Issue Resolution: During the project, various bugs and issues arose, which were resolved with the help of resources like Stack Overflow.
+- Deep Learning Exploration: A more comprehensive understanding of deep machine learning terms was achieved through in-depth exploration of various resources, including YouTube.
+- Readme File: The readme file was created using the Code Institute template, providing a structured and organized format.
+- Inspiration: Certain elements presented in the readme file were inspired by the work of Van-essa (https://github.com/van-essa/heritage-housing-issues#readme).
+- Mentor Guidance: I would like to express my gratitude to my mentors, who provided guidance throughout the project, ensuring the implementation of best practices.
 
 ## Acknowledgements
 
-Thank you Code Institute for this awesome course. I have really enjoyed this experience and the way my mindset was changed from believing that coding is just a gibberish language to actually understanding it and working with it. 
-- Many thanks to my both mentors who guided me throughout this course, Daisy and Marcel. 
-- And huge thanks to Jordan White, who introduced me to this course.
+I would like to extend my heartfelt appreciation to Code Institute for offering this exceptional course. The learning experience has been truly enjoyable and has transformed my perspective from considering coding as mere gibberish to actually understanding and working with it. I am immensely grateful to both my mentors, Harry and ..., for their continuous support throughout the course.
 
 ---
